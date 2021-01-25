@@ -27,6 +27,7 @@ class Log2File (
         Log.d(tag, msg)
     }
 
+    // write
     fun write (msg: String) {
         // Log.d(tag, "|<- $msg")
 
@@ -52,7 +53,14 @@ class Log2File (
         }
     }
 
+    // read
     fun read (): List<String> {
+        return readLines()
+    }
+    fun readText (): String {
+        return file.readText()
+    }
+    fun readLines (): List<String> {
         val lines =  file.readLines()
         Log.d(tag, "|-> read ${lines.size} lines")
         return lines
