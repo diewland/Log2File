@@ -62,8 +62,11 @@ class Log2File (
     }
     fun readLines (): List<String> {
         val lines =  file.readLines()
-        Log.d(tag, "|-> read ${lines.size} lines")
+        // Log.d(tag, "|-> read ${lines.size} lines")
         return lines
+    }
+    fun lastLine (): String {
+        return readLines().last()
     }
 
     private fun getTs (): String {
