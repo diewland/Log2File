@@ -65,8 +65,12 @@ class Log2File (
         // Log.d(tag, "|-> read ${lines.size} lines")
         return lines
     }
-    fun lastLine (): String {
-        return readLines().last()
+    fun lastLine (): String? {
+        val lines = readLines()
+        return when (lines.size) {
+            0 -> null
+            else -> lines.last()
+        }
     }
 
     private fun getTs (): String {
