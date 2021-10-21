@@ -31,7 +31,7 @@ object DailyLog {
         folderPath: String = "/sdcard",
         filePrefix: String = "daily",
         fileExt: String = "log",
-    ) {
+    ): Int {
         // sort files in folder from old to new
         val dir = File(folderPath)
         val logs = dir.listFiles { file ->
@@ -41,8 +41,11 @@ object DailyLog {
 
         // remove old files
         val remove = logs.size - limit
-        if (remove > 0)
+        if (remove > 0) {
             logs.take(remove).forEach { it.delete() }
+            return remove
+        }
+        return 0
     }
 
     // - - - - - X - - - - -
